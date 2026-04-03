@@ -105,6 +105,18 @@
   body
 }
 
+// ─── Intro Blurb ─────────────────────────────────────────────────
+#let section-intro(content, tint: tints.slate) = {
+  block(
+    width: 100%,
+    fill: tint.darken(6%),
+    radius: 1.6pt,
+    inset: (x: 1.6mm, y: 1.1mm),
+    text(size: body-size, fill: rgb("#5F6B7A"), content),
+  )
+  v(1.4mm)
+}
+
 // ─── Section Card ────────────────────────────────────────────────
 #let section(
   title: "",
@@ -118,7 +130,8 @@
     radius: card-radius,
     clip: true,
     stroke: 0.3pt + accent.lighten(60%),
-    {
+    stack(
+      spacing: 0pt,
       // Header band
       block(
         width: 100%,
@@ -129,20 +142,17 @@
           weight: "bold",
           fill: white,
           tracking: 0.3pt,
-          {
-            if icon != "" { icon + " " }
-            upper(title)
-          }
+          upper(title)
         )
-      )
+      ),
       // Body
       block(
         width: 100%,
         fill: tint,
         inset: card-inset,
         body
-      )
-    }
+      ),
+    )
   )
 }
 
