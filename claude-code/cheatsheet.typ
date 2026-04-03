@@ -222,7 +222,7 @@
       #entry("claude mcp get <name>", "Inspect server config")
       #entry("claude mcp remove <name>", "Remove server")
       #entry("claude mcp serve", "Expose Claude as MCP")
-      #entry("--transport http|stdio|sse", "Server transport type")
+      #entry("--transport\nhttp|stdio|sse", "Server transport type")
       #entry("--scope local|project|user", "Where config is stored")
     ]
     v(card-gap)
@@ -245,8 +245,8 @@
       #v(1mm)
       #subsection("Skills", accent: colors.orange)[
         #entry("/skills", "List available skills")
-        #entry(".claude/skills/<name>/", "Project custom skills")
-        #entry("~/.claude/skills/<name>/", "Personal custom skills")
+        #entry(".claude/skills/\n<name>/", "Project custom skills")
+        #entry("~/.claude/skills/\n<name>/", "Personal custom skills")
       ]
       #v(1mm)
       #subsection("Agents", accent: colors.orange)[
@@ -273,8 +273,8 @@
       #entry("ANTHROPIC_MODEL", "Default model")
       #entry("CLAUDE_CODE_EFFORT_LEVEL", "Default effort")
       #entry("MAX_THINKING_TOKENS", "Set thinking budget")
-      #entry("CLAUDE_STREAM_IDLE_TIMEOUT_MS", "Streaming timeout")
-      #entry("CLAUDE_CODE_SUBPROCESS_ENV_SCRUB", "Scrub secrets in subprocesses")
+      #entry("CLAUDE_STREAM_IDLE_\nTIMEOUT_MS", "Streaming timeout")
+      #entry("CLAUDE_CODE_SUBPROCESS_\nENV_SCRUB", "Scrub secrets in subprocesses")
     ]
     v(card-gap)
     section(title: "Troubleshooting", icon: "🛠️", accent: colors.amber, tint: tints.amber)[

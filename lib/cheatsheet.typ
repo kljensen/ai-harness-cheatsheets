@@ -34,12 +34,12 @@
 )
 
 // ─── Fonts ───────────────────────────────────────────────────────
-#let body-font = ("Helvetica Neue", "Helvetica", "Arial")
+#let body-font = ("Roboto", "Helvetica Neue", "Helvetica", "Arial")
 #let mono-font = ("Menlo", "Courier New")
 
 // ─── Sizing ──────────────────────────────────────────────────────
-#let body-size = 8.5pt
-#let mono-size = 8pt
+#let body-size = 8.2pt
+#let mono-size = 7.5pt
 #let header-size = 9pt
 #let title-size = 16pt
 #let subtitle-size = 9pt
@@ -47,11 +47,11 @@
 #let subsection-title-size = 7pt
 
 // ─── Spacing ─────────────────────────────────────────────────────
-#let card-gap = 3mm
+#let card-gap = 2.2mm
 #let card-radius = 3pt
-#let card-inset = 2.5mm
-#let header-inset = (x: 3mm, y: 1.5mm)
-#let row-gap = 1.2mm
+#let card-inset = 2.1mm
+#let header-inset = (x: 2.6mm, y: 1.3mm)
+#let row-gap = 0.65mm
 
 // ─── Keycap Component ────────────────────────────────────────────
 #let keycap(key) = {
@@ -81,10 +81,10 @@
   block(spacing: row-gap,
     grid(
       columns: (auto, 1fr),
-      column-gutter: 2mm,
+      column-gutter: 1.8mm,
       align: (left, left),
-      text(font: mono-font, size: mono-size, weight: "medium", key),
-      text(size: body-size, fill: rgb("#374151"), desc),
+      box(text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)),
+      text(size: body-size, fill: rgb("#4B5563"), desc),
     )
   )
 }
@@ -195,8 +195,9 @@
     size: body-size,
     weight: "regular",
     fill: rgb("#1F2937"),
+    hyphenate: false,
   )
-  set par(leading: 0.35em, spacing: 0.4em, justify: false)
+  set par(leading: 0.32em, spacing: 0.28em, justify: false)
 
   body
 }
