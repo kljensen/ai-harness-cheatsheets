@@ -111,6 +111,7 @@
     width: 100%,
     text(size: body-size, weight: "medium", style: "italic", fill: rgb("#6B7280"), content),
   )
+  v(1.8mm)
 }
 
 // ─── Section Card ────────────────────────────────────────────────

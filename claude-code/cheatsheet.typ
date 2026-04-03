@@ -18,25 +18,25 @@
   // Column 1
   {
     section(title: "Launching", icon: "", accent: colors.blue, tint: tints.blue)[
-      #section-intro([You launch Claude from your terminal/shell. Start with one of these commands:], tint: tints.blue)
+      #section-intro([You launch Claude from your terminal/shell by typing one of these.], tint: tints.blue)
       #entry("claude", "Start interactive session")
-      #entry("claude \"prompt\"", "Start with first question")
-      #entry("claude --continue", "Continue latest local session")
+      #entry("claude \"prompt\"", "Start with a prompt")
+      #entry("claude --continue", "Continue latest session from this dir")
       #entry("claude --resume", "Browse and resume sessions")
-      #entry("claude -n <name>", "Launch with a session name")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", icon: "", accent: colors.indigo, tint: tints.indigo)[
-      #section-intro([Use these keys to steer Claude quickly without typing commands.], tint: tints.indigo)
+      #section-intro([Inside Claude you can use these keyboard shortcuts.], tint: tints.indigo)
       #entry("Ctrl+C", "Stop current response")
       #entry("Ctrl+D", "Exit Claude")
       #entry("Ctrl+L", "Clear terminal screen")
       #entry("Ctrl+R", "Search earlier prompts")
       #entry("Ctrl+G", "Open prompt in editor")
       #entry("Ctrl+O", "Transcript mode")
-      #entry("Shift+Tab", "Cycle approval modes")
+      #entry("Shift+Tab", "Toggle plan mode")
       #entry("Alt+P", "Switch model")
       #entry("Alt+T", "Toggle deeper thinking")
+      #entry("Esc", "Stop, rewind, or summarize")
       #entry("\\ + Enter", "Insert newline")
     ]
   },
@@ -58,16 +58,25 @@
         #entry("/model", "Set model")
         #entry("/effort", "Set effort level")
         #entry("/permissions", "View/update approvals")
+        #entry("/theme", "Change theme")
         #entry("/context", "Check context usage")
         #entry("/compact [focus]", "Compress context")
+        #entry("/btw", "Ask side question")
         #entry("/help", "Show command reference")
       ]
       #v(0.8mm)
-      #subsection("Tools", accent: colors.violet)[
+      #subsection("Tools & Extras", accent: colors.violet)[
         #entry("/mcp", "Manage MCP connections")
         #entry("/skills", "List available skills")
         #entry("/memory", "Edit memory files")
         #entry("/agents", "Manage agents")
+        #entry("/add-dir", "Add working directory")
+        #entry("/voice", "Voice input mode")
+        #entry("/loop", "Run recurring task")
+        #entry("/stats", "Usage stats")
+        #entry("/insights", "Session insights")
+        #entry("/desktop", "Continue in Desktop app")
+        #entry("/schedule", "Cloud scheduled tasks")
       ]
     ]
   },
@@ -102,6 +111,15 @@
       #entry("/skills", "List available skills")
       #entry(".claude/skills/<name>/", "Project skill location")
       #entry("~/.claude/skills/<name>/", "Personal skill location")
+    ]
+    v(card-gap)
+    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
+      #section-intro([Agents are pre-configured helpers you can delegate tasks to.], tint: tints.cyan)
+      #entry("/agents", "Open/manage available agents")
+      #entry("--agent <name>", "Launch Claude with a specific agent")
+      #entry("Explore", "Fast read-only helper")
+      #entry("Plan", "Planning/research helper")
+      #entry("General", "Default full-capability helper")
     ]
     v(card-gap)
     section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
