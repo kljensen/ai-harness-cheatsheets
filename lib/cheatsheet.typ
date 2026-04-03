@@ -38,9 +38,9 @@
 #let mono-font = ("Menlo", "Courier New")
 
 // ─── Sizing ──────────────────────────────────────────────────────
-#let body-size = 8pt
-#let mono-size = 7.5pt
-#let header-size = 8.5pt
+#let body-size = 8.5pt
+#let mono-size = 8pt
+#let header-size = 9pt
 #let title-size = 16pt
 #let subtitle-size = 9pt
 #let section-title-size = 9pt
