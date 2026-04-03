@@ -51,7 +51,7 @@
 #let card-radius = 3pt
 #let card-inset = 2.1mm
 #let header-inset = (x: 2.6mm, y: 1.3mm)
-#let row-gap = 0.65mm
+#let row-gap = 0.9mm
 
 // ─── Keycap Component ────────────────────────────────────────────
 #let keycap(key) = {
@@ -84,7 +84,7 @@
       column-gutter: 1.8mm,
       align: (left, left),
       box(text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)),
-      text(size: body-size, fill: rgb("#4B5563"), desc),
+      text(size: body-size, fill: rgb("#5F6B7A"), desc),
     )
   )
 }
@@ -197,7 +197,7 @@
     fill: rgb("#1F2937"),
     hyphenate: false,
   )
-  set par(leading: 0.32em, spacing: 0.28em, justify: false)
+  set par(leading: 0.42em, spacing: 0.32em, justify: false)
 
   body
 }
