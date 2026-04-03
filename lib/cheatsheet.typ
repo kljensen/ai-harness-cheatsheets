@@ -109,12 +109,8 @@
 #let section-intro(content, tint: tints.slate) = {
   block(
     width: 100%,
-    fill: tint.darken(6%),
-    radius: 1.6pt,
-    inset: (x: 1.6mm, y: 1.1mm),
-    text(size: body-size, fill: rgb("#5F6B7A"), content),
+    text(size: body-size, weight: "medium", style: "italic", fill: rgb("#6B7280"), content),
   )
-  v(1.4mm)
 }
 
 // ─── Section Card ────────────────────────────────────────────────
