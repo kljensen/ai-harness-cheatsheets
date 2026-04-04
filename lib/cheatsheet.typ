@@ -38,8 +38,8 @@
 #let mono-font = ("Menlo", "Courier New")
 
 // ─── Sizing ──────────────────────────────────────────────────────
-#let body-size = 8.2pt
-#let mono-size = 7.5pt
+#let body-size = 8.6pt
+#let mono-size = 7.9pt
 #let header-size = 9pt
 #let title-size = 16pt
 #let subtitle-size = 9pt
@@ -87,6 +87,13 @@
       text(size: body-size, fill: rgb("#5F6B7A"), desc),
     )
   )
+}
+
+// ─── Stacked Entry (for long keys/commands) ──────────────────────
+#let entry-stack(key, desc) = {
+  text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)
+  linebreak()
+  text(size: body-size, fill: rgb("#5F6B7A"), desc)
 }
 
 // ─── Path Line (for long filesystem paths in prose sections) ─────

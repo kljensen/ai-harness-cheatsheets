@@ -36,6 +36,7 @@
       #entry("--max-budget-usd", "Set max cost for print mode")
       #entry("--output-format json", "Structured output")
       #entry("--json-schema", "Validate response to a JSON schema")
+      #entry-stack("--dangerously-skip-permissions", "Bypass prompts (high risk)")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", icon: "", accent: colors.indigo, tint: tints.indigo)[
