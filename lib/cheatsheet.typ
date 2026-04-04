@@ -34,7 +34,7 @@
 )
 
 // ─── Fonts ───────────────────────────────────────────────────────
-#let body-font = ("Roboto", "Helvetica Neue", "Helvetica", "Arial")
+#let body-font = ("Arial")
 #let mono-font = ("Menlo", "Courier New")
 
 // ─── Sizing ──────────────────────────────────────────────────────

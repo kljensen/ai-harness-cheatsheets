@@ -21,8 +21,22 @@
       #section-intro([You launch Claude from your terminal/shell by typing one of these.], tint: tints.blue)
       #entry("claude", "Start interactive session")
       #entry("claude \"prompt\"", "Start with a prompt")
-      #entry("claude --continue", "Continue latest session from this dir")
-      #entry("claude --resume", "Browse and resume sessions")
+      #entry("claude -p \"prompt\"", "Respond to a prompt and exit immediately")
+    ]
+    v(card-gap)
+    section(title: "Flags", icon: "", accent: colors.slate, tint: tints.slate)[
+      #section-intro([Flags change how Claude runs when launching from terminal.], tint: tints.slate)
+      #entry("-p, --print", "One-shot answer and exit")
+      #entry("--continue", "Continue latest session in this dir")
+      #entry("--resume", "Browse/resume sessions")
+      #entry("--model", "Choose model")
+      #entry("--effort", "Set effort")
+      #entry("--permission-mode plan", "Start in plan (read-only) mode")
+      #entry("--allowedTools", "Pre-approve allowed tools")
+      #entry("--max-turns", "Limit agent turn count")
+      #entry("--max-budget-usd", "Set max cost for print mode")
+      #entry("--output-format json", "Structured output")
+      #entry("--json-schema", "Validate response to a JSON schema")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", icon: "", accent: colors.indigo, tint: tints.indigo)[
@@ -57,11 +71,11 @@
       #subsection("Control", accent: colors.violet)[
         #entry("/model", "Set model")
         #entry("/effort", "Set effort level")
+        #entry("/plan", "Enter plan (read-only) mode")
         #entry("/permissions", "View/update approvals")
-        #entry("/theme", "Change theme")
         #entry("/context", "Check context usage")
         #entry("/compact [focus]", "Compress context")
-        #entry("/btw", "Ask side question")
+        #entry("/cost", "Show token/cost usage")
         #entry("/help", "Show command reference")
       ]
       #v(0.8mm)
@@ -71,30 +85,14 @@
         #entry("/memory", "Edit memory files")
         #entry("/agents", "Manage agents")
         #entry("/add-dir", "Add working directory")
-        #entry("/voice", "Voice input mode")
-        #entry("/loop", "Run recurring task")
-        #entry("/stats", "Usage stats")
-        #entry("/insights", "Session insights")
-        #entry("/desktop", "Continue in Desktop app")
-        #entry("/schedule", "Cloud scheduled tasks")
+        #entry("/fast", "Turn on fast mode ($$)")
+
       ]
     ]
   },
 
   // Column 3
   {
-    section(title: "Flags", icon: "", accent: colors.slate, tint: tints.slate)[
-      #section-intro([Flags change how Claude runs when launching from terminal.], tint: tints.slate)
-      #entry("-p, --print", "One-shot answer and exit")
-      #entry("-n, --name", "Set session name")
-      #entry("--continue", "Continue latest local session")
-      #entry("--resume", "Browse/resume sessions")
-      #entry("--model", "Choose model")
-      #entry("--effort", "Set effort")
-      #entry("--add-dir", "Add folder access")
-      #entry("--output-format json", "Structured output")
-    ]
-    v(card-gap)
     section(title: "MCP", icon: "", accent: colors.purple, tint: tints.purple)[
       #section-intro([MCP connects Claude to external tools and data services.], tint: tints.purple)
       #entry("/mcp", "Open MCP manager")
