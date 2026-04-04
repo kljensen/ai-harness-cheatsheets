@@ -8,6 +8,9 @@
   col-count: 4,
 )
 
+#let tutorial-head = text.with(size: body-size, weight: "semibold", fill: ui.text-primary)
+#let tutorial-body = text.with(size: body-size, fill: ui.text-muted)
+
 #page-title("Claude Code Cheat Sheet", subtitle: "Single-Page Draft — Non-Developer Focus")
 #v(card-gap)
 
@@ -102,26 +105,26 @@
     section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
       #section-intro([Memory has two parts: #code("CLAUDE.md") instructions you write, and auto-memory notes Claude writes from your corrections.], tint: tints.amber)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/init") to scaffold a starter memory file, and #code("/memory") to review/edit what Claude is loading.]
+      #tutorial-head[How to use]
+      #tutorial-body[Use #code("/init") to scaffold a starter memory file, and #code("/memory") to review/edit what Claude is loading.]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where instruction files live]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Project shared instructions:]
-      #path-line("./CLAUDE.md or ./.claude/CLAUDE.md")
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal defaults for all projects:]
-      #path-line("~/.claude/CLAUDE.md")
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal project-only overrides (usually gitignored):]
-      #path-line("./CLAUDE.local.md")
+      #tutorial-head[Where instruction files live]
+      #tutorial-body[Project shared instructions:]
+      #path-line("./CLAUDE.md or ./.claude/CLAUDE.md").
+      #tutorial-body[Personal defaults for all projects:]
+      #path-line("~/.claude/CLAUDE.md").
+      #tutorial-body[Personal project-only overrides (usually gitignored):]
+      #path-line("./CLAUDE.local.md").
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Auto-memory location]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Auto-memory is stored per project/worktree under:]
+      #tutorial-head[Auto-memory location]
+      #tutorial-body[Auto-memory is stored per project/worktree under:]
       #path-line("~/.claude/projects/<project>/memory/")
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Practical tips]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Keep each #code("CLAUDE.md") short (around 200 lines max), use #code("@file") imports for references, and move occasional workflows into skills so always-loaded memory stays lean.]
+      #tutorial-head[Practical tips]
+      #tutorial-body[Keep each #code("CLAUDE.md") short (around 200 lines max), use #code("@file") imports for references, and move occasional workflows into skills so always-loaded memory stays lean.]
     ]
   },
 
@@ -139,45 +142,45 @@
     section(title: "Skills", icon: "", accent: colors.emerald, tint: tints.emerald)[
       #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.], tint: tints.emerald)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/skills") to list what is available, then run one with #code("/<skill-name> [args]").]
+      #tutorial-head[How to use]
+      #tutorial-body[Use #code("/skills") to list what is available, then run one with #code("/<skill-name> [args]").]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Project-specific skills live in:]
+      #tutorial-head[Where they live]
+      #tutorial-body[Project-specific skills live in:]
       #path-line(".claude/skills/<skill>/SKILL.md")
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal skills across all projects live in:]
+      #tutorial-body[Personal skills across all projects live in:]
       #path-line("~/.claude/skills/<skill>/SKILL.md")
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How Claude picks skills]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Claude also auto-invokes skills when your request matches the skill #code("description") in #code("SKILL.md").]
+      #tutorial-head[How Claude picks skills]
+      #tutorial-body[Claude also auto-invokes skills when your request matches the skill #code("description") in #code("SKILL.md").]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Skill file basics]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
+      #tutorial-head[Skill file basics]
+      #tutorial-body[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
     ]
     v(card-gap)
     section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
       #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.], tint: tints.cyan)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/agents") to create and manage agents.]
+      #tutorial-head[How to use]
+      #tutorial-body[Use #code("/agents") to create and manage agents.]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Project-specific agents live in:]
+      #tutorial-head[Where they live]
+      #tutorial-body[Project-specific agents live in:]
       #path-line(".claude/agents/<name>.md")
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal agents across all projects live in:]
+      #tutorial-body[Personal agents across all projects live in:]
       #path-line("~/.claude/agents/<name>.md")
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to reference]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("@agent-<name>") to run one task with that agent, or #code("--agent <name>") to run the whole session as that agent.]
+      #tutorial-head[How to reference]
+      #tutorial-body[Use #code("@agent-<name>") to run one task with that agent, or #code("--agent <name>") to run the whole session as that agent.]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Built-ins]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
+      #tutorial-head[Built-ins]
+      #tutorial-body[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
     ]
   },
   // Column 3

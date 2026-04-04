@@ -33,6 +33,18 @@
   slate:    rgb("#F8FAFC"),
 )
 
+// ─── Semantic UI Colors ─────────────────────────────────────────
+#let ui = (
+  text-primary:   rgb("#1F2937"),
+  text-muted:     rgb("#5F6B7A"),
+  text-subtle:    rgb("#6B7280"),
+  text-path:      rgb("#334155"),
+  text-footer:    rgb("#9CA3AF"),
+  surface-keycap: rgb("#F3F4F6"),
+  border-keycap:  rgb("#D1D5DB"),
+  surface-code:   rgb("#F8FAFC"),
+)
+
 // ─── Fonts ───────────────────────────────────────────────────────
 #let body-font = ("Arial")
 #let mono-font = ("Menlo", "Courier New")
@@ -56,8 +68,8 @@
 // ─── Keycap Component ────────────────────────────────────────────
 #let keycap(key) = {
   box(
-    fill: rgb("#F3F4F6"),
-    stroke: 0.4pt + rgb("#D1D5DB"),
+    fill: ui.surface-keycap,
+    stroke: 0.4pt + ui.border-keycap,
     radius: 1.5pt,
     inset: (x: 1.8pt, y: 0.8pt),
     baseline: 0.8pt,
@@ -68,7 +80,7 @@
 // ─── Code Component ──────────────────────────────────────────────
 #let code(content) = {
   box(
-    fill: rgb("#F8FAFC"),
+    fill: ui.surface-code,
     radius: 1pt,
     inset: (x: 1.5pt, y: 0.5pt),
     baseline: 0.5pt,
@@ -83,41 +95,41 @@
       columns: (auto, 1fr),
       column-gutter: 1.8mm,
       align: (left, left),
-      box(text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)),
-      text(size: body-size, fill: rgb("#5F6B7A"), desc),
+      box(text(font: mono-font, size: mono-size, weight: "semibold", fill: ui.text-primary, key)),
+      text(size: body-size, fill: ui.text-muted, desc),
     )
   )
 }
 
 // ─── Stacked Entry (for long keys/commands) ──────────────────────
 #let entry-stack(key, desc) = {
-  text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)
+  text(font: mono-font, size: mono-size, weight: "semibold", fill: ui.text-primary, key)
   linebreak()
-  text(size: body-size, fill: rgb("#5F6B7A"), desc)
+  text(size: body-size, fill: ui.text-muted, desc)
 }
 
 // ─── Flow Entry (single-column, wraps naturally) ─────────────────
 #let entry-flow(key, desc) = {
   block(spacing: row-gap)[
-    #text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)
+    #text(font: mono-font, size: mono-size, weight: "semibold", fill: ui.text-primary, key)
     #h(1.2mm)
-    #text(size: body-size, fill: rgb("#5F6B7A"), desc)
+    #text(size: body-size, fill: ui.text-muted, desc)
   ]
 }
 
 // ─── Path Line (for long filesystem paths in prose sections) ─────
 #let path-line(path) = {
   box(
-    width: 100%,
-    fill: rgb("#F8FAFC"),
+    fill: ui.surface-code,
     radius: 1pt,
     inset: (x: 1.5pt, y: 0.8pt),
-    text(font: mono-font, size: mono-size, fill: rgb("#334155"), path),
+    baseline: 0.5pt,
+    text(font: mono-font, size: mono-size, fill: ui.text-path, path),
   )
 }
 
 // ─── Subsection Header ──────────────────────────────────────────
-#let subsection(title, accent: rgb("#6B7280"), body) = {
+#let subsection(title, accent: ui.text-subtle, body) = {
   block(spacing: 1.2mm,
     block(
       spacing: 0.5mm,
@@ -136,7 +148,7 @@
 #let section-intro(content, tint: tints.slate) = {
   block(
     width: 100%,
-    text(size: body-size, weight: "medium", style: "italic", fill: rgb("#6B7280"), content),
+    text(size: body-size, weight: "medium", style: "italic", fill: ui.text-subtle, content),
   )
   v(1.8mm)
 }
@@ -204,8 +216,8 @@
     inset: (x: 1mm, y: 0mm),
     grid(
       columns: (1fr, 1fr),
-      text(size: 5pt, fill: rgb("#9CA3AF"), left-text),
-      align(right, text(size: 5pt, fill: rgb("#9CA3AF"), right-text)),
+      text(size: 5pt, fill: ui.text-footer, left-text),
+      align(right, text(size: 5pt, fill: ui.text-footer, right-text)),
     )
   )
 }
@@ -228,7 +240,7 @@
     font: body-font,
     size: body-size,
     weight: "regular",
-    fill: rgb("#1F2937"),
+    fill: ui.text-primary,
     hyphenate: false,
   )
   set par(leading: 0.42em, spacing: 0.32em, justify: false)
