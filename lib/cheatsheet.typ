@@ -96,6 +96,15 @@
   text(size: body-size, fill: rgb("#5F6B7A"), desc)
 }
 
+// ─── Flow Entry (single-column, wraps naturally) ─────────────────
+#let entry-flow(key, desc) = {
+  block(spacing: row-gap)[
+    #text(font: mono-font, size: mono-size, weight: "semibold", fill: rgb("#1F2937"), key)
+    #h(1.2mm)
+    #text(size: body-size, fill: rgb("#5F6B7A"), desc)
+  ]
+}
+
 // ─── Path Line (for long filesystem paths in prose sections) ─────
 #let path-line(path) = {
   box(
