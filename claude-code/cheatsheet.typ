@@ -31,7 +31,6 @@
       #entry("--resume", "Browse/resume sessions")
       #entry("--model", "Choose model")
       #entry("--effort", "Set effort")
-      #entry("--permission-mode plan", "Start in plan (read-only) mode")
       #entry("--allowedTools", "Pre-approve allowed tools")
       #entry("--max-turns", "Limit agent turn count")
       #entry("--max-budget-usd", "Set max cost for print mode")
@@ -52,6 +51,15 @@
       #entry("Alt+T", "Toggle deeper thinking")
       #entry("Esc", "Stop, rewind, or summarize")
       #entry("\\ + Enter", "Insert newline")
+    ]
+    v(card-gap)
+    section(title: "Auth", icon: "", accent: colors.rose, tint: tints.rose)[
+      #section-intro([Use auth commands to sign in, verify access, and fix account issues.], tint: tints.rose)
+      #entry("claude auth login", "Sign in")
+      #entry("claude auth status", "Check sign-in status")
+      #entry("claude auth logout", "Sign out")
+      #entry("claude update", "Check for updates")
+      #entry("claude doctor", "Run health check")
     ]
   },
 
@@ -89,6 +97,26 @@
 
       ]
     ]
+    v(card-gap)
+    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
+      #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.], tint: tints.cyan)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/agents") to create and manage agents.]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Project: #code(".claude/agents/<name>.md") (shared in git)]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal: #code("~/.claude/agents/<name>.md") (all projects)]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to reference]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("@agent-<name>") to run one task with that agent, or #code("--agent <name>") to run the whole session as that agent.]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Built-ins]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
+    ]
   },
 
   // Column 3
@@ -105,19 +133,23 @@
   // Column 4
   {
     section(title: "Skills", icon: "", accent: colors.emerald, tint: tints.emerald)[
-      #section-intro([Skills are reusable instruction packs Claude can invoke.], tint: tints.emerald)
-      #entry("/skills", "List available skills")
-      #entry(".claude/skills/<name>/", "Project skill location")
-      #entry("~/.claude/skills/<name>/", "Personal skill location")
-    ]
-    v(card-gap)
-    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
-      #section-intro([Agents are pre-configured helpers you can delegate tasks to.], tint: tints.cyan)
-      #entry("/agents", "Open/manage available agents")
-      #entry("--agent <name>", "Launch Claude with a specific agent")
-      #entry("Explore", "Fast read-only helper")
-      #entry("Plan", "Planning/research helper")
-      #entry("General", "Default full-capability helper")
+      #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.], tint: tints.emerald)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/skills") to list what is available, then run one with #code("/<skill-name> [args]").]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Project: #code(".claude/skills/<skill-name>/SKILL.md") (shared in git)]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal: #code("~/.claude/skills/<skill-name>/SKILL.md") (all projects)]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How Claude picks skills]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Claude also auto-invokes skills when your request matches the skill #code("description") in #code("SKILL.md").]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Skill file basics]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
     ]
     v(card-gap)
     section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
@@ -126,15 +158,6 @@
       #entry("./CLAUDE.md", "Project shared memory")
       #entry("~/.claude/CLAUDE.md", "Personal default memory")
       #entry("@file", "Attach file context in prompt")
-    ]
-    v(card-gap)
-    section(title: "Auth", icon: "", accent: colors.rose, tint: tints.rose)[
-      #section-intro([Use auth commands to sign in, verify access, and fix account issues.], tint: tints.rose)
-      #entry("claude auth login", "Sign in")
-      #entry("claude auth status", "Check sign-in status")
-      #entry("claude auth logout", "Sign out")
-      #entry("claude update", "Check for updates")
-      #entry("claude doctor", "Run health check")
     ]
   },
 )
