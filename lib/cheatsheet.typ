@@ -588,7 +588,7 @@
   let th = theme-state.at(here())
   block(spacing: row-gap)[
     #text(font: mono-font, size: mono-size, weight: "semibold", fill: th.ui.text-primary, key)
-    #h(1.2mm)
+    #h(0.8mm)
     #text(size: body-size, fill: th.ui.text-muted, desc)
   ]
 }
@@ -606,19 +606,18 @@
 }
 
 // ─── Subsection Header ──────────────────────────────────────────
-#let subsection(title, accent: auto, body) = context {
+#let subsection(title, kind: auto, accent: auto, body) = context {
   let th = theme-state.at(here())
-  let label-color = if accent == auto { th.ui.text-subtle } else { accent }
+  let label-color = if accent != auto { accent } else if kind != auto {
+    th.accent.at(kind, default: th.accent.blue).darken(25%)
+  } else { th.ui.text-subtle }
 
-  block(spacing: 1.2mm,
-    block(
-      spacing: 0.5mm,
-      text(
-        size: subsection-title-size,
-        weight: "bold",
-        fill: label-color,
-        upper(title)
-      )
+  block(above: 2.4mm, below: 0.5mm,
+    text(
+      size: subsection-title-size,
+      weight: "bold",
+      fill: label-color,
+      upper(title)
     )
   )
   body

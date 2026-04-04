@@ -20,6 +20,31 @@
   text(size: body-size, fill: th.ui.text-muted, body)
 }
 
+#let title-card() = context {
+  let th = theme-state.at(here())
+  block(
+    width: 100%,
+    radius: card-radius,
+    stroke: 0.4pt + th.accent.blue.lighten(35%),
+    fill: th.tint.blue,
+    inset: (x: 2.2mm, y: 2.0mm),
+  )[
+    #grid(
+      columns: (auto, 1fr),
+      column-gutter: 1.6mm,
+      align: (left + horizon, left + horizon),
+      image("../assets/clawd-mini.svg", width: 11mm),
+      [
+        #text(size: 10.5pt, weight: "bold", fill: th.ui.text-primary)[Claude Code Cheat Sheet]
+        #linebreak()
+        #text(size: body-size, weight: "semibold", fill: th.ui.text-muted)[Single-Page Draft — Non-Developer Focus]
+        #linebreak()
+        #text(size: body-size, fill: th.ui.text-subtle)[Theme: #selected-theme.name]
+      ],
+    )
+  ]
+}
+
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: card-gap,
@@ -28,9 +53,9 @@
   {
     section(title: "Launching", kind: "blue")[
       #section-intro([You launch Claude from your terminal/shell by typing one of these.])
-      #entry("claude", "Start interactive session")
-      #entry("claude \"prompt\"", "Start with a prompt")
-      #entry("claude -p \"prompt\"", "Respond to a prompt and exit immediately")
+      #entry-flow("claude", "Start interactive session")
+      #entry-flow("claude \"prompt\"", "Start with a prompt")
+      #entry-flow("claude -p \"prompt\"", "Respond to a prompt and exit immediately")
     ]
     v(card-gap)
     section(title: "Flags", kind: "slate")[
@@ -49,27 +74,30 @@
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", kind: "indigo")[
-      #section-intro([Inside Claude you can use these keyboard shortcuts.])
-      #entry("Ctrl+C", "Stop current response")
-      #entry("Ctrl+D", "Exit Claude")
-      #entry("Ctrl+L", "Clear terminal screen")
-      #entry("Ctrl+R", "Search earlier prompts")
-      #entry("Ctrl+G", "Open prompt in editor")
-      #entry("Ctrl+O", "Transcript mode")
-      #entry("Shift+Tab", "Toggle plan mode")
-      #entry("Alt+P", "Switch model")
-      #entry("Alt+T", "Toggle deeper thinking")
-      #entry("Esc", "Stop, rewind, or summarize")
-      #entry("\\ + Enter", "Insert newline")
+      #section-intro([Inside Claude you can hit these key combos to control Claude])
+      #entry-flow("Ctrl+C", "Stop current response")
+      #entry-flow("Ctrl+D", "Exit Claude")
+      #entry-flow("Ctrl+L", "Clear terminal screen")
+      #entry-flow("Ctrl+R", "Search earlier prompts")
+      #entry-flow("Ctrl+G", "Open prompt in editor")
+      #entry-flow("Ctrl+O", "Transcript mode")
+      #entry-flow("Shift+Tab", "Toggle plan mode")
+      #entry-flow("Alt+P", "Switch model")
+      #entry-flow("Alt+T", "Toggle deeper thinking")
+      #entry-flow("Esc", "Stop, rewind, or summarize")
+      #entry-flow("\\ + Enter", "Insert newline")
     ]
     v(card-gap)
-    section(title: "Auth", kind: "rose")[
-      #section-intro([Use auth commands to sign in, verify access, and fix account issues.])
-      #entry("claude auth login", "Sign in")
-      #entry("claude auth status", "Check sign-in status")
-      #entry("claude auth logout", "Sign out")
-      #entry("claude update", "Check for updates")
-      #entry("claude doctor", "Run health check")
+    section(title: "MCP", kind: "purple")[
+      #section-intro([
+        Model Context Protocol tools connect Claude to external services and APIs.
+        Prefer CLIs if possible. You can connect ChatGPT to Claude via MCP and have
+        models consult each other.
+      ])
+      #entry-flow("/mcp", "Open MCP manager")
+      #entry-flow("claude mcp list", "List configured servers")
+      #entry-flow("claude mcp add ...", "Add a server")
+      #entry-flow("claude mcp remove <name>", "Remove a server")
     ]
   },
 
@@ -77,33 +105,34 @@
   {
     section(title: "Slash Commands", kind: "violet")[
       #section-intro([Type a slash command to manage sessions, control behavior, and access tools.])
-      #subsection("Session")[
-        #entry("/clear", "Clear current conversation")
-        #entry("/resume", "Open or switch sessions")
-        #entry("/rename", "Rename current session")
-        #entry("/rewind", "Step back in conversation")
-        #entry("/copy", "Copy response")
-        #entry("/export", "Export conversation")
+      #subsection("Session", kind: "violet")[
+        #entry-flow("/clear", "Clear current conversation")
+        #entry-flow("/resume", "Open or switch sessions")
+        #entry-flow("/rename", "Rename current session")
+        #entry-flow("/rewind", "Step back in conversation")
+        #entry-flow("/copy", "Copy response")
+        #entry-flow("/export", "Export conversation")
+        #entry-flow("/login", "Use your Claude subscription")
+        #entry-flow("/logout", "Uh...logout")
+        #entry-flow("/branch", "Branch off from the current conversation with ability to return")
       ]
-      #v(0.8mm)
-      #subsection("Control")[
-        #entry("/model", "Set model")
-        #entry("/effort", "Set effort level")
-        #entry("/plan", "Enter plan (read-only) mode")
-        #entry("/permissions", "View/update approvals")
-        #entry("/context", "Check context usage")
-        #entry("/compact [focus]", "Compress context")
-        #entry("/cost", "Show token/cost usage")
-        #entry("/help", "Show command reference")
+      #subsection("Control", kind: "violet")[
+        #entry-flow("/model", "Set model")
+        #entry-flow("/effort", "Set effort level")
+        #entry-flow("/plan", "Enter plan (read-only) mode")
+        #entry-flow("/permissions", "View/update approvals")
+        #entry-flow("/context", "Check context usage")
+        #entry-flow("/compact [focus]", "Compress context")
+        #entry-flow("/cost", "Show token/cost usage")
+        #entry-flow("/help", "Show command reference")
       ]
-      #v(0.8mm)
-      #subsection("Tools & Extras")[
-        #entry("/mcp", "Manage MCP connections")
-        #entry("/skills", "List available skills")
-        #entry("/memory", "Edit memory files")
-        #entry("/agents", "Manage agents")
-        #entry("/add-dir", "Add working directory")
-        #entry("/fast", "Turn on fast mode ($$)")
+      #subsection("Tools & Extras", kind: "violet")[
+        #entry-flow("/mcp", "Manage MCP connections")
+        #entry-flow("/skills", "List available skills")
+        #entry-flow("/memory", "Edit memory files")
+        #entry-flow("/agents", "Manage agents")
+        #entry-flow("/add-dir", "Add working directory")
+        #entry-flow("/fast", "Turn on fast mode ($$)")
 
       ]
     ]
@@ -137,14 +166,6 @@
 
   // Column 3
   {
-    section(title: "MCP", kind: "purple")[
-      #section-intro([MCP connects Claude to external tools and data services.])
-      #entry("/mcp", "Open MCP manager")
-      #entry("claude mcp list", "List configured servers")
-      #entry("claude mcp add ...", "Add a server")
-      #entry("claude mcp remove <name>", "Remove a server")
-    ]
-    v(card-gap)
     section(title: "Skills", kind: "emerald")[
       #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.])
 
@@ -192,19 +213,7 @@
 
   // Column 4
   {
-    section(title: "Claude Code Cheat Sheet", kind: "blue")[
-      #grid(
-        columns: (auto, 1fr),
-        column-gutter: 1.4mm,
-        align: (left + horizon, left + horizon),
-        image("../assets/clawd-mini.svg", width: 14mm),
-        [
-          #text(size: body-size, weight: "semibold")[Single-Page Draft — Non-Developer Focus]
-          #linebreak()
-          #text(size: body-size)[Theme: #selected-theme.name]
-        ],
-      )
-    ]
+    title-card()
   },
 )
 
