@@ -20,9 +20,6 @@
   text(size: body-size, fill: th.ui.text-muted, body)
 }
 
-#page-title("Claude Code Cheat Sheet", subtitle: "Single-Page Draft — Non-Developer Focus")
-#v(card-gap)
-
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr),
   column-gutter: card-gap,
@@ -37,7 +34,7 @@
     ]
     v(card-gap)
     section(title: "Flags", kind: "slate")[
-      #section-intro([Add flags to your `claude` command to change how Claude runs and is configured.])
+      #section-intro([Add flags to your `claude` shell command to change how Claude runs.])
       #entry-flow("-p, --print", "One-shot answer and exit")
       #entry-flow("--continue", "Continue latest session in dir")
       #entry-flow("--resume", "Browse/resume sessions")
@@ -138,7 +135,7 @@
   },
 
 
-  // Column 4
+  // Column 3
   {
     section(title: "MCP", kind: "purple")[
       #section-intro([MCP connects Claude to external tools and data services.])
@@ -192,8 +189,22 @@
       #tutorial-body[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
     ]
   },
-  // Column 3
+
+  // Column 4
   {
+    section(title: "Claude Code Cheat Sheet", kind: "blue")[
+      #grid(
+        columns: (auto, 1fr),
+        column-gutter: 1.4mm,
+        align: (left + horizon, left + horizon),
+        image("../assets/clawd-mini.svg", width: 14mm),
+        [
+          #text(size: body-size, weight: "semibold")[Single-Page Draft — Non-Developer Focus]
+          #linebreak()
+          #text(size: body-size)[Theme: #selected-theme.name]
+        ],
+      )
+    ]
   },
 )
 

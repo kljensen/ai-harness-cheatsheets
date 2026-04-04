@@ -689,7 +689,7 @@
 }
 
 // ─── Page Title Bar ─────────────────────────────────────────────
-#let page-title(title, subtitle: none, accent: auto) = context {
+#let page-title(title, subtitle: none, accent: auto, mark: none) = context {
   let th = theme-state.at(here())
   let bar = if accent == auto { th.accent.blue } else { accent }
   let header-color = th.ui.at("header-text", default: white)
@@ -700,7 +700,17 @@
     fill: bar,
     radius: 2pt,
     {
-      text(size: title-size, weight: "bold", fill: header-color, tracking: 0.5pt, title)
+      if mark == none {
+        text(size: title-size, weight: "bold", fill: header-color, tracking: 0.5pt, title)
+      } else {
+        grid(
+          columns: (auto, 1fr),
+          column-gutter: 1.5mm,
+          align: (left + horizon, left + horizon),
+          mark,
+          text(size: title-size, weight: "bold", fill: header-color, tracking: 0.5pt, title),
+        )
+      }
       if subtitle != none {
         h(3mm)
         text(size: subtitle-size, fill: header-color.darken(25%), subtitle)
