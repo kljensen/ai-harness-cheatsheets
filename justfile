@@ -9,5 +9,8 @@ claude:
 preview ppi="160":
   typst compile --root . claude-code/cheatsheet.typ "claude-code/preview-{p}.png" --format png --ppi {{ppi}}
 
+variants:
+  ./scripts/render-theme-variants.sh
+
 clean:
-  rm -f claude-code/cheatsheet.pdf claude-code/preview-*.png
+  rm -f claude-code/cheatsheet.pdf claude-code/preview-*.png claude-code/variants/*.pdf

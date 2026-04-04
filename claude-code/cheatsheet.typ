@@ -2,14 +2,23 @@
 
 #import "../lib/cheatsheet.typ": *
 
+#let theme-name = sys.inputs.at("theme", default: "paper_garden")
+#let selected-theme = theme-from-name(theme-name)
+
 #show: cheatsheet.with(
   title: "Claude Code",
-  accent: colors.blue,
+  theme: selected-theme,
   col-count: 4,
 )
 
-#let tutorial-head = text.with(size: body-size, weight: "semibold", fill: ui.text-primary)
-#let tutorial-body = text.with(size: body-size, fill: ui.text-muted)
+#let tutorial-head(body) = context {
+  let th = theme-state.at(here())
+  text(size: body-size, weight: "semibold", fill: th.ui.text-primary, body)
+}
+#let tutorial-body(body) = context {
+  let th = theme-state.at(here())
+  text(size: body-size, fill: th.ui.text-muted, body)
+}
 
 #page-title("Claude Code Cheat Sheet", subtitle: "Single-Page Draft — Non-Developer Focus")
 #v(card-gap)
@@ -20,15 +29,15 @@
 
   // Column 1
   {
-    section(title: "Launching", icon: "", accent: colors.blue, tint: tints.blue)[
-      #section-intro([You launch Claude from your terminal/shell by typing one of these.], tint: tints.blue)
+    section(title: "Launching", kind: "blue")[
+      #section-intro([You launch Claude from your terminal/shell by typing one of these.])
       #entry("claude", "Start interactive session")
       #entry("claude \"prompt\"", "Start with a prompt")
       #entry("claude -p \"prompt\"", "Respond to a prompt and exit immediately")
     ]
     v(card-gap)
-    section(title: "Flags", icon: "", accent: colors.slate, tint: tints.slate)[
-      #section-intro([Flags change how Claude runs when launching from terminal.], tint: tints.slate)
+    section(title: "Flags", kind: "slate")[
+      #section-intro([Add flags to your `claude` command to change how Claude runs and is configured.])
       #entry-flow("-p, --print", "One-shot answer and exit")
       #entry-flow("--continue", "Continue latest session in dir")
       #entry-flow("--resume", "Browse/resume sessions")
@@ -42,8 +51,8 @@
       #entry-flow("--dangerously-skip-permissions", "Allow Claude to act without confirmation")
     ]
     v(card-gap)
-    section(title: "Keyboard Shortcuts", icon: "", accent: colors.indigo, tint: tints.indigo)[
-      #section-intro([Inside Claude you can use these keyboard shortcuts.], tint: tints.indigo)
+    section(title: "Keyboard Shortcuts", kind: "indigo")[
+      #section-intro([Inside Claude you can use these keyboard shortcuts.])
       #entry("Ctrl+C", "Stop current response")
       #entry("Ctrl+D", "Exit Claude")
       #entry("Ctrl+L", "Clear terminal screen")
@@ -57,8 +66,8 @@
       #entry("\\ + Enter", "Insert newline")
     ]
     v(card-gap)
-    section(title: "Auth", icon: "", accent: colors.rose, tint: tints.rose)[
-      #section-intro([Use auth commands to sign in, verify access, and fix account issues.], tint: tints.rose)
+    section(title: "Auth", kind: "rose")[
+      #section-intro([Use auth commands to sign in, verify access, and fix account issues.])
       #entry("claude auth login", "Sign in")
       #entry("claude auth status", "Check sign-in status")
       #entry("claude auth logout", "Sign out")
@@ -69,9 +78,9 @@
 
   // Column 2
   {
-    section(title: "Slash Commands", icon: "", accent: colors.violet, tint: tints.violet)[
-      #section-intro([Type a slash command to manage sessions, control behavior, and access tools.], tint: tints.violet)
-      #subsection("Session", accent: colors.violet)[
+    section(title: "Slash Commands", kind: "violet")[
+      #section-intro([Type a slash command to manage sessions, control behavior, and access tools.])
+      #subsection("Session")[
         #entry("/clear", "Clear current conversation")
         #entry("/resume", "Open or switch sessions")
         #entry("/rename", "Rename current session")
@@ -80,7 +89,7 @@
         #entry("/export", "Export conversation")
       ]
       #v(0.8mm)
-      #subsection("Control", accent: colors.violet)[
+      #subsection("Control")[
         #entry("/model", "Set model")
         #entry("/effort", "Set effort level")
         #entry("/plan", "Enter plan (read-only) mode")
@@ -91,7 +100,7 @@
         #entry("/help", "Show command reference")
       ]
       #v(0.8mm)
-      #subsection("Tools & Extras", accent: colors.violet)[
+      #subsection("Tools & Extras")[
         #entry("/mcp", "Manage MCP connections")
         #entry("/skills", "List available skills")
         #entry("/memory", "Edit memory files")
@@ -102,8 +111,8 @@
       ]
     ]
     v(card-gap)
-    section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
-      #section-intro([Memory has two parts: #code("CLAUDE.md") instructions you write, and auto-memory notes Claude writes from your corrections.], tint: tints.amber)
+    section(title: "Memory", kind: "amber")[
+      #section-intro([Memory has two parts: #code("CLAUDE.md") instructions you write, and auto-memory notes Claude writes from your corrections.])
 
       #tutorial-head[How to use]
       #tutorial-body[Use #code("/init") to scaffold a starter memory file, and #code("/memory") to review/edit what Claude is loading.]
@@ -131,16 +140,16 @@
 
   // Column 4
   {
-    section(title: "MCP", icon: "", accent: colors.purple, tint: tints.purple)[
-      #section-intro([MCP connects Claude to external tools and data services.], tint: tints.purple)
+    section(title: "MCP", kind: "purple")[
+      #section-intro([MCP connects Claude to external tools and data services.])
       #entry("/mcp", "Open MCP manager")
       #entry("claude mcp list", "List configured servers")
       #entry("claude mcp add ...", "Add a server")
       #entry("claude mcp remove <name>", "Remove a server")
     ]
     v(card-gap)
-    section(title: "Skills", icon: "", accent: colors.emerald, tint: tints.emerald)[
-      #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.], tint: tints.emerald)
+    section(title: "Skills", kind: "emerald")[
+      #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.])
 
       #tutorial-head[How to use]
       #tutorial-body[Use #code("/skills") to list what is available, then run one with #code("/<skill-name> [args]").]
@@ -161,8 +170,8 @@
       #tutorial-body[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
     ]
     v(card-gap)
-    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
-      #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.], tint: tints.cyan)
+    section(title: "Agents", kind: "cyan")[
+      #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.])
 
       #tutorial-head[How to use]
       #tutorial-body[Use #code("/agents") to create and manage agents.]
@@ -191,5 +200,5 @@
 #v(1fr)
 #page-footer(
   "Claude Code v2.1 · " + datetime.today().display("[month repr:long] [day], [year]"),
-  "Single-page draft for review"
+  "Theme: " + selected-theme.name
 )
