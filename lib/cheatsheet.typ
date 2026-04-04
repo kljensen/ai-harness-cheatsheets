@@ -89,6 +89,17 @@
   )
 }
 
+// ─── Path Line (for long filesystem paths in prose sections) ─────
+#let path-line(path) = {
+  box(
+    width: 100%,
+    fill: rgb("#F8FAFC"),
+    radius: 1pt,
+    inset: (x: 1.5pt, y: 0.8pt),
+    text(font: mono-font, size: mono-size, fill: rgb("#334155"), path),
+  )
+}
+
 // ─── Subsection Header ──────────────────────────────────────────
 #let subsection(title, accent: rgb("#6B7280"), body) = {
   block(spacing: 1.2mm,

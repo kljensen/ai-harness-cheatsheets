@@ -98,28 +98,34 @@
       ]
     ]
     v(card-gap)
-    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
-      #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.], tint: tints.cyan)
+    section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
+      #section-intro([Memory has two parts: #code("CLAUDE.md") instructions you write, and auto-memory notes Claude writes from your corrections.], tint: tints.amber)
 
       #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/agents") to create and manage agents.]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/init") to scaffold a starter memory file, and #code("/memory") to review/edit what Claude is loading.]
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Project: #code(".claude/agents/<name>.md") (shared in git)]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal: #code("~/.claude/agents/<name>.md") (all projects)]
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where instruction files live]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Project shared instructions:]
+      #path-line("./CLAUDE.md or ./.claude/CLAUDE.md")
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal defaults for all projects:]
+      #path-line("~/.claude/CLAUDE.md")
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal project-only overrides (usually gitignored):]
+      #path-line("./CLAUDE.local.md")
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to reference]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("@agent-<name>") to run one task with that agent, or #code("--agent <name>") to run the whole session as that agent.]
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Auto-memory location]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Auto-memory is stored per project/worktree under:]
+      #path-line("~/.claude/projects/<project>/memory/")
       #v(0.6mm)
 
-      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Built-ins]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Practical tips]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Keep each #code("CLAUDE.md") short (around 200 lines max), use #code("@file") imports for references, and move occasional workflows into skills so always-loaded memory stays lean.]
     ]
   },
 
-  // Column 3
+
+  // Column 4
   {
     section(title: "MCP", icon: "", accent: colors.purple, tint: tints.purple)[
       #section-intro([MCP connects Claude to external tools and data services.], tint: tints.purple)
@@ -128,10 +134,7 @@
       #entry("claude mcp add ...", "Add a server")
       #entry("claude mcp remove <name>", "Remove a server")
     ]
-  },
-
-  // Column 4
-  {
+    v(card-gap)
     section(title: "Skills", icon: "", accent: colors.emerald, tint: tints.emerald)[
       #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.], tint: tints.emerald)
 
@@ -140,8 +143,10 @@
       #v(0.6mm)
 
       #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Project: #code(".claude/skills/<skill-name>/SKILL.md") (shared in git)]
-      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal: #code("~/.claude/skills/<skill-name>/SKILL.md") (all projects)]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Project-specific skills live in:]
+      #path-line(".claude/skills/<skill>/SKILL.md")
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal skills across all projects live in:]
+      #path-line("~/.claude/skills/<skill>/SKILL.md")
       #v(0.6mm)
 
       #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How Claude picks skills]
@@ -152,13 +157,30 @@
       #text(size: body-size, fill: rgb("#5F6B7A"))[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
     ]
     v(card-gap)
-    section(title: "Memory", icon: "", accent: colors.amber, tint: tints.amber)[
-      #section-intro([Memory files guide persistent behavior and context.], tint: tints.amber)
-      #entry("/memory", "Edit memory quickly")
-      #entry("./CLAUDE.md", "Project shared memory")
-      #entry("~/.claude/CLAUDE.md", "Personal default memory")
-      #entry("@file", "Attach file context in prompt")
+    section(title: "Agents", icon: "", accent: colors.cyan, tint: tints.cyan)[
+      #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.], tint: tints.cyan)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to use]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("/agents") to create and manage agents.]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Where they live]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Project-specific agents live in:]
+      #path-line(".claude/agents/<name>.md")
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Personal agents across all projects live in:]
+      #path-line("~/.claude/agents/<name>.md")
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[How to reference]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[Use #code("@agent-<name>") to run one task with that agent, or #code("--agent <name>") to run the whole session as that agent.]
+      #v(0.6mm)
+
+      #text(size: body-size, weight: "semibold", fill: rgb("#1F2937"))[Built-ins]
+      #text(size: body-size, fill: rgb("#5F6B7A"))[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
     ]
+  },
+  // Column 3
+  {
   },
 )
 
