@@ -27,16 +27,16 @@
     section(title: "Flags", icon: "", accent: colors.slate, tint: tints.slate)[
       #section-intro([Flags change how Claude runs when launching from terminal.], tint: tints.slate)
       #entry-flow("-p, --print", "One-shot answer and exit")
-      #entry-flow("--continue", "Continue latest session in this dir")
+      #entry-flow("--continue", "Continue latest session in dir")
       #entry-flow("--resume", "Browse/resume sessions")
       #entry-flow("--model", "Choose model")
-      #entry-flow("--effort", "Set effort")
+      #entry-flow("--effort", "Set effort (low|medium|high|max)")
       #entry-flow("--allowedTools", "Pre-approve allowed tools")
       #entry-flow("--max-turns", "Limit agent turn count")
-      #entry-flow("--max-budget-usd", "Set max cost for print mode")
+      #entry-flow("--chrome", "Enable control of Chrome")
       #entry-flow("--output-format json", "Structured output")
-      #entry-flow("--json-schema", "Validate response to a JSON schema")
-      #entry-flow("--dangerously-skip-permissions", "Bypass prompts (high risk)")
+      #entry-flow("--json-schema", "Constrain response to JSON schema with certain fields")
+      #entry-flow("--dangerously-skip-permissions", "Allow Claude to act without confirmation")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", icon: "", accent: colors.indigo, tint: tints.indigo)[
