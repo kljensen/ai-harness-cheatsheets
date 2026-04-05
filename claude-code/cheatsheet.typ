@@ -37,11 +37,15 @@
     inset: (x: 2.5mm, y: 2mm),
   )[
     #block(width: 100%)[
-      #place(right + horizon, dx: 6mm, dy: 4mm, image("../assets/clawd-mini.svg", width: 18mm))
-      #text(font: "Anthropic Serif Web Text", size: 22pt, weight: 800, fill: th.ui.text-primary)[Claude Code]
-      #linebreak()
-      #h(1mm)
-      #text(font: "Anthropic Sans Web Text", size: 10pt, weight: 300, tracking: 1pt, fill: th.ui.text-muted)[Cheat Sheet]
+      #place(right + horizon, dx: 6mm, dy: 3mm, image("../assets/clawd-mini.svg", width: 18mm))
+      #let title = text(font: "Anthropic Serif Web Text", size: 22pt, weight: 800, fill: th.ui.text-primary)[Claude Code]
+      #let subtitle = text(font: "Anthropic Sans Web Text", size: 7pt, weight: 300, tracking: 1pt, fill: th.ui.text-muted)[Cheat Sheet · April 2026]
+      #let tw = measure(title).width
+      #box(width: tw)[
+        #title
+        #v(-0.3em)
+        #align(center, subtitle)
+      ]
     ]
   ]
 }
