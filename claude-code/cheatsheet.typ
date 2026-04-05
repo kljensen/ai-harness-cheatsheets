@@ -20,6 +20,15 @@
   text(size: body-size, fill: th.ui.text-muted, body)
 }
 
+#let tip(lead, body) = context {
+  let th = theme-state.at(here())
+  block(above: 1.6mm, below: 0mm)[
+    #text(size: body-size, weight: "bold", fill: th.ui.text-primary, lead)
+    #h(0.3mm)
+    #text(size: body-size, fill: th.ui.text-muted, body)
+  ]
+}
+
 #let title-card() = context {
   let th = theme-state.at(here())
   block(
@@ -214,6 +223,71 @@
   // Column 4
   {
     title-card()
+    v(card-gap)
+    section(title: "Tips", kind: "emerald")[
+      #tip("Use plan mode.", [
+          The machine cannot read your mind. Make darn
+          sure it knows what you want before you turn
+          it loose.
+      ])
+      #tip("Lean hard on Skills.", [
+          Did Claude screw up then figure it out?
+          Preserve lessons learned in a skill.
+      ])
+      #tip("Build named agents.", [
+          Want to chat with Daniel Kahneman? Have
+          Claude research and write a Kahneman agent.
+      ])
+      #tip("Give Claude a way to check itself.", [
+          Tests, linters, expected outputs. Anthropic
+          calls this the single highest-leverage thing.
+      ])
+      #tip("Context is your \#1 resource.", [
+          File reads, command outputs, conversation —
+          it all eats context. Performance degrades
+          as it fills. Treat it like money.
+      ])
+      #tip("Two strikes, start over.", [
+          Corrected Claude twice on the same issue?
+          Context is polluted. Use \/clear and write
+          a better prompt with what you learned.
+      ])
+      #tip("/clear between unrelated tasks.", [
+          Leftover context from a different task is
+          where Claude gets confused. Start fresh.
+      ])
+      #tip("/compact when sessions get long.", [
+          Add a focus hint: \/compact focus on the
+          API changes. Preserves what matters.
+      ])
+      #tip("Let Claude interview you.", [
+          Say "interview me about this." Claude asks
+          about edge cases and tradeoffs you haven't
+          thought of.
+      ])
+      #tip("Delegate to subagents.", [
+          Outsourcing works like real life. Keep your
+          main agent focused by delegating the menial
+          and tangential.
+      ])
+      #tip("Point to code you like.", [
+          Old projects, existing patterns, anything.
+          Claude follows conventions better when
+          shown, not told.
+      ])
+      #tip("/btw for quick questions.", [
+          Answer shows in an overlay, never enters
+          conversation history. Zero context cost.
+      ])
+      #tip("Use git. Commit early and often.", [
+          Small commits are easy to revert.
+          Big ones are archeology.
+      ])
+      #tip("Rewind freely.", [
+          Every action is checkpointed. Try risky
+          things knowing you can always roll back.
+      ])
+    ]
   },
 )
 
