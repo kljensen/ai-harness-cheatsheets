@@ -34,23 +34,15 @@
   block(
     width: 100%,
     radius: card-radius,
-    stroke: 0.4pt + th.accent.blue.lighten(35%),
-    fill: th.tint.blue,
-    inset: (x: 2.2mm, y: 2.0mm),
+    inset: (x: 2.5mm, y: 2mm),
   )[
-    #grid(
-      columns: (auto, 1fr),
-      column-gutter: 1.6mm,
-      align: (left + horizon, left + horizon),
-      image("../assets/clawd-mini.svg", width: 11mm),
-      [
-        #text(size: 10.5pt, weight: "bold", fill: th.ui.text-primary)[Claude Code Cheat Sheet]
-        #linebreak()
-        #text(size: body-size, weight: "semibold", fill: th.ui.text-muted)[Single-Page Draft — Non-Developer Focus]
-        #linebreak()
-        #text(size: body-size, fill: th.ui.text-subtle)[Theme: #selected-theme.name]
-      ],
-    )
+    #block(width: 100%)[
+      #place(right + horizon, dx: 6mm, dy: 4mm, image("../assets/clawd-mini.svg", width: 18mm))
+      #text(font: "Anthropic Serif Web Text", size: 22pt, weight: 800, fill: th.ui.text-primary)[Claude Code]
+      #linebreak()
+      #h(1mm)
+      #text(font: "Anthropic Sans Web Text", size: 10pt, weight: 300, tracking: 1pt, fill: th.ui.text-muted)[Cheat Sheet]
+    ]
   ]
 }
 
@@ -79,7 +71,8 @@
       #entry-flow("--chrome", "Enable control of Chrome")
       #entry-flow("--output-format json", "Structured output")
       #entry-flow("--json-schema", "Constrain response to JSON schema with certain fields")
-      #entry-flow("--dangerously-skip-permissions", "Allow Claude to act without confirmation")
+      #entry-flow("--dangerously-skip-permissions", "Allow Claude to act without confirmation (YOLO)")
+      #entry-flow("--enable-auto-mode", "Near-YOLO with protection against dangerous actions")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", kind: "indigo")[
@@ -226,13 +219,21 @@
     v(card-gap)
     section(title: "Tips", kind: "emerald")[
       #tip("Use plan mode.", [
-          The machine cannot read your mind. Make darn
+          The machine cannot read your mind (yet). Make darn
           sure it knows what you want before you turn
           it loose.
       ])
       #tip("Lean hard on Skills.", [
           Did Claude screw up then figure it out?
-          Preserve lessons learned in a skill.
+          Preserve lessons learned by updating
+          existing 
+          or adding new skills.
+      ])
+      #tip("Bring your own knowledge.", [
+          The LLM is a thinking machine, not a fact
+          machine. Give it papers, documents,
+          APIs, search tools. Force it to get live data
+          you trust.
       ])
       #tip("Build named agents.", [
           Want to chat with Daniel Kahneman? Have
@@ -249,16 +250,13 @@
       ])
       #tip("Two strikes, start over.", [
           Corrected Claude twice on the same issue?
-          Context is polluted. Use \/clear and write
+          Context is polluted. Use ESC to rewind or
+          \/clear and write
           a better prompt with what you learned.
       ])
-      #tip("/clear between unrelated tasks.", [
+      #tip("/clear or /compact between unrelated tasks.", [
           Leftover context from a different task is
           where Claude gets confused. Start fresh.
-      ])
-      #tip("/compact when sessions get long.", [
-          Add a focus hint: \/compact focus on the
-          API changes. Preserves what matters.
       ])
       #tip("Let Claude interview you.", [
           Say "interview me about this." Claude asks

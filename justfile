@@ -4,10 +4,10 @@ default:
   just claude
 
 claude:
-  typst compile --root . claude-code/cheatsheet.typ claude-code/cheatsheet.pdf
+  typst compile --root . --font-path assets/fonts/ claude-code/cheatsheet.typ claude-code/cheatsheet.pdf
 
 preview ppi="160":
-  typst compile --root . claude-code/cheatsheet.typ "claude-code/preview-{p}.png" --format png --ppi {{ppi}}
+  typst compile --root . --font-path assets/fonts/ claude-code/cheatsheet.typ "claude-code/preview-{p}.png" --format png --ppi {{ppi}}
 
 variants:
   ./scripts/render-theme-variants.sh
