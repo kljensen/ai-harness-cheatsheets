@@ -63,7 +63,7 @@
       #entry-flow("claude -p \"prompt\"", "Respond to a prompt and exit immediately")
     ]
     v(card-gap)
-    section(title: "Flags", kind: "slate")[
+    section(title: "Flags", kind: "orange")[
       #section-intro([Add flags to your `claude` shell command to change how Claude runs.])
       #entry-flow("-p, --print", "One-shot answer and exit")
       #entry-flow("--continue", "Continue latest session in dir")
@@ -79,7 +79,7 @@
       #entry-flow("--enable-auto-mode", "Near-YOLO with protection against dangerous actions")
     ]
     v(card-gap)
-    section(title: "Keyboard Shortcuts", kind: "indigo")[
+    section(title: "Keyboard Shortcuts", kind: "teal")[
       #section-intro([Inside Claude you can hit these key combos to control Claude])
       #entry-flow("Ctrl+C", "Stop current response")
       #entry-flow("Ctrl+D", "Exit Claude session")
@@ -97,7 +97,7 @@
       #entry-flow("!", "Run a shell command directly")
     ]
     v(card-gap)
-    section(title: "MCP", kind: "purple")[
+    section(title: "MCP", kind: "rose")[
       #section-intro([
         Model Context Protocol tools connect Claude to external services and APIs.
         Prefer CLIs if possible. You can connect ChatGPT to Claude via MCP and have
@@ -151,7 +151,7 @@
       ]
     ]
     v(card-gap)
-    section(title: "Memory", kind: "amber")[
+    section(title: "Memory", kind: "slate")[
       #section-intro([Memory has two parts: #code("CLAUDE.md") instructions you write, and auto-memory notes Claude writes from your corrections.])
 
       #tutorial-head[How to use]
@@ -180,7 +180,7 @@
 
   // Column 3
   {
-    section(title: "Skills", kind: "emerald")[
+    section(title: "Skills", kind: "amber")[
       #section-intro([Skills are reusable playbooks Claude can load automatically or run directly as slash commands.])
 
       #tutorial-head[How to use]
@@ -214,7 +214,7 @@
       #tutorial-body[Write skills for repeated workflows: deploy, review, test. Keep each focused on one task. Include example invocations. Use #code("@file") to pull in templates.]
     ]
     v(card-gap)
-    section(title: "Agents", kind: "cyan")[
+    section(title: "Agents", kind: "emerald")[
       #section-intro([Agents are specialized subassistants with their own prompt, tools, and permissions. Claude can auto-delegate based on each agent's description.])
 
       #tutorial-head[How to use]
@@ -249,7 +249,7 @@
   {
     title-card()
     v(card-gap)
-    section(title: "Tips", kind: "emerald")[
+    section(title: "Tips", kind: "cyan")[
       #tip("Use plan mode.", [
           The machine cannot read your mind (yet). Make darn sure it knows what you want before you turn it loose. Explore, plan, then implement.
       ])
