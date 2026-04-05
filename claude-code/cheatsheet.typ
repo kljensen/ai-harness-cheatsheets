@@ -67,7 +67,7 @@
       #section-intro([Add flags to your `claude` shell command to change how Claude runs.])
       #entry-flow("-p, --print", "One-shot answer and exit")
       #entry-flow("--continue", "Continue latest session in dir")
-      #entry-flow("--resume", "Browse/resume sessions")
+      #entry-flow("--resume", "Browse and resume sessions")
       #entry-flow("--model", "Choose model")
       #entry-flow("--effort", "Set effort (low|medium|high|max)")
       #entry-flow("--allowedTools", "Pre-approve allowed tools")
@@ -82,16 +82,19 @@
     section(title: "Keyboard Shortcuts", kind: "indigo")[
       #section-intro([Inside Claude you can hit these key combos to control Claude])
       #entry-flow("Ctrl+C", "Stop current response")
-      #entry-flow("Ctrl+D", "Exit Claude")
+      #entry-flow("Ctrl+D", "Exit Claude session")
       #entry-flow("Ctrl+L", "Clear terminal screen")
       #entry-flow("Ctrl+R", "Search earlier prompts")
-      #entry-flow("Ctrl+G", "Open prompt in editor")
-      #entry-flow("Ctrl+O", "Transcript mode")
-      #entry-flow("Shift+Tab", "Toggle plan mode")
-      #entry-flow("Alt+P", "Switch model")
+      #entry-flow("Ctrl+G", "Open prompt in \$EDITOR")
+      #entry-flow("Ctrl+O", "Verbose transcript mode")
+      #entry-flow("Ctrl+V", "Paste image from clipboard")
+      #entry-flow("Shift+Tab", "Cycle permission modes")
+      #entry-flow("Alt+P", "Switch model mid-session")
       #entry-flow("Alt+T", "Toggle deeper thinking")
       #entry-flow("Esc", "Stop, rewind, or summarize")
       #entry-flow("\\ + Enter", "Insert newline")
+      #entry-flow("@ + filename", "Mention/autocomplete a file")
+      #entry-flow("!", "Run a shell command directly")
     ]
     v(card-gap)
     section(title: "MCP", kind: "purple")[
@@ -104,6 +107,7 @@
       #entry-flow("claude mcp list", "List configured servers")
       #entry-flow("claude mcp add ...", "Add a server")
       #entry-flow("claude mcp remove <name>", "Remove a server")
+
     ]
   },
 
@@ -116,29 +120,33 @@
         #entry-flow("/resume", "Open or switch sessions")
         #entry-flow("/rename", "Rename current session")
         #entry-flow("/rewind", "Step back in conversation")
-        #entry-flow("/copy", "Copy response")
-        #entry-flow("/export", "Export conversation")
+        #entry-flow("/copy", "Copy last response to clipboard")
+        #entry-flow("/export", "Export conversation to file")
         #entry-flow("/login", "Use your Claude subscription")
         #entry-flow("/logout", "Uh...logout")
-        #entry-flow("/branch", "Branch off from the current conversation with ability to return")
+        #entry-flow("/branch", "Branch conversation; return later")
+        #entry-flow("/diff", "Show git diff for current session")
       ]
       #subsection("Control", kind: "violet")[
-        #entry-flow("/model", "Set model")
-        #entry-flow("/effort", "Set effort level")
+        #entry-flow("/model", "Set model for session")
+        #entry-flow("/effort", "Set thinking effort level")
         #entry-flow("/plan", "Enter plan (read-only) mode")
         #entry-flow("/permissions", "View/update approvals")
-        #entry-flow("/context", "Check context usage")
+        #entry-flow("/context", "Check context window usage")
         #entry-flow("/compact [focus]", "Compress context")
         #entry-flow("/cost", "Show token/cost usage")
         #entry-flow("/help", "Show command reference")
+        #entry-flow("/init", "Scaffold starter CLAUDE.md")
+        #entry-flow("/hooks", "Manage deterministic hooks")
       ]
       #subsection("Tools & Extras", kind: "violet")[
-        #entry-flow("/mcp", "Manage MCP connections")
-        #entry-flow("/skills", "List available skills")
-        #entry-flow("/memory", "Edit memory files")
-        #entry-flow("/agents", "Manage agents")
-        #entry-flow("/add-dir", "Add working directory")
+        #entry-flow("/mcp", "Manage MCP server connections")
+        #entry-flow("/skills", "List and run available skills")
+        #entry-flow("/memory", "Edit CLAUDE.md memory files")
+        #entry-flow("/agents", "Create and manage agents")
+        #entry-flow("/add-dir", "Add extra working directory")
         #entry-flow("/fast", "Turn on fast mode ($$)")
+        #entry-flow("/btw <question>", "Quick overlay answer (no context cost)")
 
       ]
     ]
@@ -165,7 +173,7 @@
       #v(0.6mm)
 
       #tutorial-head[Practical tips]
-      #tutorial-body[Keep each #code("CLAUDE.md") short (around 200 lines max), use #code("@file") imports for references, and move occasional workflows into skills so always-loaded memory stays lean.]
+      #tutorial-body[Keep #code("CLAUDE.md") short (under 200 lines), use #code("@file") imports, and move occasional workflows into skills so memory stays lean.]
     ]
   },
 
@@ -192,6 +200,18 @@
 
       #tutorial-head[Skill file basics]
       #tutorial-body[A skill folder needs #code("SKILL.md") with frontmatter like #code("name") and #code("description"); optional files can store templates, examples, and scripts.]
+      #v(0.6mm)
+
+      #tutorial-head[Built-in skills]
+      #tutorial-body[#code("/simplify") refactor code, #code("/batch") run across files, #code("/debug [desc]") debug with a plan, #code("/loop [interval]") repeat a task on a schedule, #code("/claude-api") help with Claude API usage.]
+      #v(0.6mm)
+
+      #tutorial-head[Frontmatter fields]
+      #tutorial-body[#code("name:") display name, #code("description:") when to auto-invoke, #code("trigger:") slash command name, #code("paths:") files to auto-load. Place supporting files (scripts, templates, examples) alongside #code("SKILL.md").]
+      #v(0.6mm)
+
+      #tutorial-head[Tips for great skills]
+      #tutorial-body[Write skills for repeated workflows: deploy, review, test. Keep each focused on one task. Include example invocations. Use #code("@file") to pull in templates.]
     ]
     v(card-gap)
     section(title: "Agents", kind: "cyan")[
@@ -213,7 +233,15 @@
       #v(0.6mm)
 
       #tutorial-head[Built-ins]
-      #tutorial-body[#code("Explore") read-only search, #code("Plan") planning research, #code("General") full-capability helper.]
+      #tutorial-body[#code("Explore") read-only codebase search, #code("Plan") planning and research (no edits), #code("General") full-capability helper, #code("Bash") shell specialist.]
+
+
+      #v(0.6mm)
+
+
+      #v(0.6mm)
+
+
     ]
   },
 
@@ -223,77 +251,50 @@
     v(card-gap)
     section(title: "Tips", kind: "emerald")[
       #tip("Use plan mode.", [
-          The machine cannot read your mind (yet). Make darn
-          sure it knows what you want before you turn
-          it loose.
+          The machine cannot read your mind (yet). Make darn sure it knows what you want before you turn it loose. Explore, plan, then implement.
       ])
       #tip("Lean hard on Skills.", [
-          Did Claude screw up then figure it out?
-          Preserve lessons learned by updating
-          existing 
-          or adding new skills.
+          Did Claude screw up then figure it out? Preserve lessons learned by updating existing or adding new skills. Claude approaches awesome asymptotically.
       ])
       #tip("Bring your own knowledge.", [
-          The LLM is a thinking machine, not a fact
-          machine. Give it papers, documents,
-          APIs, search tools. Force it to get live data
-          you trust.
+          The LLM is a thinking machine, not a fact machine. Give it papers, documents, APIs, search tools. Force it to get live data you trust.
       ])
       #tip("Build named agents.", [
-          Want to chat with Daniel Kahneman? Have
-          Claude research and write a Kahneman agent.
+          Want to chat with Daniel Kahneman? Have Claude research and write a Kahneman agent. Encode domain expertise as reusable personas.
       ])
       #tip("Give Claude a way to check itself.", [
-          Tests, linters, expected outputs. Anthropic
-          calls this the single highest-leverage thing.
+          Tests, linters, expected outputs. Anthropic calls this the single highest-leverage thing you can do.
       ])
       #tip("Context is your \#1 resource.", [
-          File reads, command outputs, conversation —
-          it all eats context. Performance degrades
-          as it fills. Treat it like money.
+          File reads, command outputs, conversation — it all eats context. Performance degrades as it fills. Treat it like money.
       ])
       #tip("Two strikes, start over.", [
-          Corrected Claude twice on the same issue?
-          Context is polluted. Use ESC to rewind or
-          \/clear and write
-          a better prompt with what you learned.
+          Corrected Claude twice on the same issue? Context is polluted. ESC to rewind or \/clear and rewrite your prompt.
       ])
-      #tip("/clear or /compact between unrelated tasks.", [
-          Leftover context from a different task is
-          where Claude gets confused. Start fresh.
+      #tip("/clear or /compact between tasks.", [
+          Leftover context from a different task confuses Claude. Start fresh or use #code("/compact focus on X") to keep relevant parts.
       ])
       #tip("Let Claude interview you.", [
-          Say "interview me about this." Claude asks
-          about edge cases and tradeoffs you haven't
-          thought of.
+          Say "interview me about this." Claude asks about edge cases and tradeoffs you haven't considered.
       ])
       #tip("Delegate to subagents.", [
-          Outsourcing works like real life. Keep your
-          main agent focused by delegating the menial
-          and tangential.
+          Keep your main agent focused by delegating research and tangential work. Fresh context = better results.
       ])
       #tip("Point to code you like.", [
-          Old projects, existing patterns, anything.
-          Claude follows conventions better when
-          shown, not told.
+          Old projects, existing patterns. Claude follows conventions better when shown, not told. Use #code("@file") to reference.
       ])
       #tip("/btw for quick questions.", [
-          Answer shows in an overlay, never enters
-          conversation history. Zero context cost.
+          Overlay answer, never enters history. Zero context cost.
       ])
       #tip("Use git. Commit early and often.", [
-          Small commits are easy to revert.
-          Big ones are archeology.
-      ])
-      #tip("Rewind freely.", [
-          Every action is checkpointed. Try risky
-          things knowing you can always roll back.
+          Small commits are easy to revert. Big ones are archeology. Commit after each logical unit.
       ])
       #tip("Use the right model.", [
-          You don't need Opus to write a recommendation
-          letter. Sonnet will crush it and eat less into
-          your quota.
+          Sonnet handles most tasks well and saves quota. Save Opus for hard reasoning problems.
       ])
+
+
+
     ]
   },
 )
