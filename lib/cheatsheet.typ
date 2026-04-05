@@ -50,7 +50,7 @@
   open_sorbet: (
     name: "Open Sorbet",
     ui: (
-      paper:          rgb("#F8F9FA"),
+      paper:          white,
       text-primary:   rgb("#212529"),
       text-muted:     rgb("#495057"),
       text-subtle:    rgb("#6C757D"),
@@ -94,7 +94,7 @@
   radix_gentle: (
     name: "Radix Gentle",
     ui: (
-      paper:          rgb("#FCFCFD"),
+      paper:          white,
       text-primary:   rgb("#1C2024"),
       text-muted:     rgb("#60646C"),
       text-subtle:    rgb("#80838D"),
@@ -138,7 +138,7 @@
   pastel_blossom: (
     name: "Pastel Blossom",
     ui: (
-      paper:          rgb("#FFFCFD"),
+      paper:          white,
       text-primary:   rgb("#2F2A36"),
       text-muted:     rgb("#5E556B"),
       text-subtle:    rgb("#7B7389"),
@@ -182,7 +182,7 @@
   mint_latte: (
     name: "Mint Latte",
     ui: (
-      paper:          rgb("#FAFCFA"),
+      paper:          white,
       text-primary:   rgb("#22312B"),
       text-muted:     rgb("#4C5F57"),
       text-subtle:    rgb("#6B7D75"),
@@ -226,7 +226,7 @@
   nord_soft: (
     name: "Nord Soft",
     ui: (
-      paper:          rgb("#ECEFF4"),
+      paper:          white,
       text-primary:   rgb("#2E3440"),
       text-muted:     rgb("#4C566A"),
       text-subtle:    rgb("#5F6C82"),
@@ -270,7 +270,7 @@
   catppuccin_latte_soft: (
     name: "Catppuccin Latte Soft",
     ui: (
-      paper:          rgb("#EFF1F5"),
+      paper:          white,
       text-primary:   rgb("#4C4F69"),
       text-muted:     rgb("#5C5F77"),
       text-subtle:    rgb("#6C6F85"),
@@ -314,7 +314,7 @@
   lavender_mist: (
     name: "Lavender Mist",
     ui: (
-      paper:          rgb("#FCFBFF"),
+      paper:          white,
       text-primary:   rgb("#2F2B3A"),
       text-muted:     rgb("#59526B"),
       text-subtle:    rgb("#776F89"),
@@ -358,7 +358,7 @@
   paper_garden: (
     name: "Paper Garden",
     ui: (
-      paper:          rgb("#FCFCF7"),
+      paper:          white,
       text-primary:   rgb("#2F352E"),
       text-muted:     rgb("#5A6558"),
       text-subtle:    rgb("#788073"),
@@ -402,7 +402,7 @@
   sunrise_chalk: (
     name: "Sunrise Chalk",
     ui: (
-      paper:          rgb("#FFFDF8"),
+      paper:          white,
       text-primary:   rgb("#322C28"),
       text-muted:     rgb("#625550"),
       text-subtle:    rgb("#84766F"),
@@ -446,7 +446,7 @@
   dusty_ocean: (
     name: "Dusty Ocean",
     ui: (
-      paper:          rgb("#F8FBFC"),
+      paper:          white,
       text-primary:   rgb("#26343A"),
       text-muted:     rgb("#4F626B"),
       text-subtle:    rgb("#6F8088"),
@@ -579,7 +579,7 @@
   ink_wash: (
     name: "Ink & Wash",
     ui: (
-      paper:          rgb("#FDFCFA"),
+      paper:          white,
       text-primary:   rgb("#2C2825"),
       text-muted:     rgb("#5C5550"),
       text-subtle:    rgb("#7A7268"),
@@ -667,7 +667,7 @@
   anthropic: (
     name: "Anthropic",
     ui: (
-      paper:          rgb("#FDFBF8"),
+      paper:          white,
       text-primary:   rgb("#2C2A26"),
       text-muted:     rgb("#5A5650"),
       text-subtle:    rgb("#78736A"),
@@ -711,7 +711,7 @@
   nord_functional: (
     name: "Nord Functional",
     ui: (
-      paper:          rgb("#ECEFF4"),
+      paper:          white,
       text-primary:   rgb("#2E3440"),
       text-muted:     rgb("#4C566A"),
       text-subtle:    rgb("#5F6C82"),
@@ -755,7 +755,7 @@
   warm_terra: (
     name: "Warm Terra",
     ui: (
-      paper:          rgb("#FBF9F6"),
+      paper:          white,
       text-primary:   rgb("#302B25"),
       text-muted:     rgb("#5E5648"),
       text-subtle:    rgb("#7D7466"),
@@ -799,7 +799,7 @@
   ocean_deep: (
     name: "Ocean Deep",
     ui: (
-      paper:          rgb("#F6F8FA"),
+      paper:          white,
       text-primary:   rgb("#1B2832"),
       text-muted:     rgb("#3E5060"),
       text-subtle:    rgb("#5A7080"),
@@ -843,7 +843,7 @@
   mono_slate: (
     name: "Mono Slate",
     ui: (
-      paper:          rgb("#FAFAFA"),
+      paper:          white,
       text-primary:   rgb("#18181B"),
       text-muted:     rgb("#3F3F46"),
       text-subtle:    rgb("#52525B"),
@@ -887,7 +887,7 @@
   colorbrewer_set3: (
     name: "ColorBrewer Set3",
     ui: (
-      paper:          rgb("#FCFCFC"),
+      paper:          white,
       text-primary:   rgb("#1F2937"),
       text-muted:     rgb("#586174"),
       text-subtle:    rgb("#6B7280"),
@@ -975,7 +975,7 @@
   dracula_light: (
     name: "Dracula Light",
     ui: (
-      paper:          rgb("#F8F8F2"),
+      paper:          white,
       text-primary:   rgb("#282A36"),
       text-muted:     rgb("#44475A"),
       text-subtle:    rgb("#6272A4"),
