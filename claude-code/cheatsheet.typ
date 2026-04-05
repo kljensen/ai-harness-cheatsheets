@@ -287,6 +287,11 @@
           Every action is checkpointed. Try risky
           things knowing you can always roll back.
       ])
+      #tip("Use the right model.", [
+          You don't need Opus to write a recommendation
+          letter. Sonnet will crush it and eat less into
+          your quota.
+      ])
     ]
   },
 )

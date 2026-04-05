@@ -49,7 +49,7 @@
   <g transform="rotate(-12, 7.5, 15)">
 
     <!-- Legs (inside rotation group so they tilt with the body) -->
-    <g fill="#6F7FFF">
+    <g fill="#E07A3A">
       <rect x="3" y="11" width="1" height="4"/>
       <rect x="5" y="11" width="1" height="4"/>
       <rect x="9" y="11" width="1" height="4"/>
@@ -60,15 +60,15 @@
     <g id="body-js">
       <g class="breathe-anim">
         <!-- Torso -->
-        <rect x="2" y="6" width="11" height="7" fill="#6F7FFF"/>
+        <rect x="2" y="6" width="11" height="7" fill="#E07A3A"/>
 
         <!-- Left Arm (visible side, facing screen) — extended + wobble -->
         <g class="arm-wobble">
-          <rect x="-1.5" y="9" width="4.5" height="2" fill="#6F7FFF"/>
+          <rect x="-1.5" y="9" width="4.5" height="2" fill="#E07A3A"/>
         </g>
 
         <!-- Right Arm (near edge, partially hidden) — normal -->
-        <rect x="13" y="9" width="2" height="2" fill="#6F7FFF"/>
+        <rect x="13" y="9" width="2" height="2" fill="#E07A3A"/>
 
         <!-- Eyes: JS translate wrapper + CSS blink -->
         <g id="eyes-js" fill="#1F2550">
