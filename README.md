@@ -78,6 +78,10 @@ All themes render on white paper with colored section headers and subtle card ti
 - [just](https://github.com/casey/just) (command runner)
 - [Ghostscript](https://www.ghostscript.com/) (`gs`) — only needed for combining variant PDFs
 
+## Contributing
+
+PRs and issues are very welcome! Whether it's a new theme, a content fix, or a cheatsheet for another tool — open an issue or send a pull request.
+
 ## License
 
 [Unlicense](LICENSE) — public domain. Do whatever you want with it.
