@@ -1046,8 +1046,8 @@
 #let theme-from-name(name) = themes.at(name, default: default-theme)
 
 // ─── Fonts ───────────────────────────────────────────────────────
-#let body-font = ("Arial")
-#let mono-font = ("Menlo", "Courier New")
+#let body-font = ("Arial", "Liberation Sans", "Nimbus Sans", "Helvetica")
+#let mono-font = ("Menlo", "DejaVu Sans Mono", "Liberation Mono", "Courier New")
 
 // ─── Sizing ──────────────────────────────────────────────────────
 #let body-size = 8.6pt
