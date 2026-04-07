@@ -2,9 +2,8 @@ name: Build All-Themes PDF
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build:
@@ -24,14 +23,9 @@ jobs:
       - name: Rename combined PDF
         run: mv claude-code/variants/ALL-THEMES.pdf claude-code-all-themes.pdf
 
-      - name: Upload all-themes PDF
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: claude-code-all-themes
-          path: claude-code-all-themes.pdf
-
-      - name: Upload individual variants
-        uses: actions/upload-artifact@v4
-        with:
-          name: claude-code-theme-variants
-          path: claude-code/variants/cheatsheet-*.pdf
+          files: |
+            claude-code-all-themes.pdf
+            claude-code/variants/cheatsheet-*.pdf
