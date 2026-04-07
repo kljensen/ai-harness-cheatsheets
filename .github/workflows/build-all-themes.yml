@@ -21,11 +21,9 @@ jobs:
         run: ./scripts/render-theme-variants.sh
 
       - name: Rename combined PDF
-        run: mv claude-code/variants/ALL-THEMES.pdf claude-code-all-themes.pdf
+        run: mv claude-code/variants/ALL-THEMES.pdf claude-code.pdf
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            claude-code-all-themes.pdf
-            claude-code/variants/cheatsheet-*.pdf
+          files: claude-code.pdf
