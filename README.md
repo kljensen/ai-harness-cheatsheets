@@ -8,7 +8,7 @@ Dense, printable, single-page cheatsheets for AI coding tools. Built with [Typst
 
 | Tool | Source | PDF |
 |------|--------|-----|
-| Claude Code | `claude-code/cheatsheet.typ` | `claude-code/cheatsheet.pdf` |
+| Claude Code | `claude-code/cheatsheet.typ` | [⬇ Download latest](https://github.com/kljensen/ai-harness-cheatsheets/releases/latest/download/claude-code.pdf) |
 
 ## Quick Start
 
