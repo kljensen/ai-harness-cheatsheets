@@ -6,5 +6,6 @@
 # Compiled assets
 *.pdf
 *.png
+!doc/*.png
 
 tmp/
