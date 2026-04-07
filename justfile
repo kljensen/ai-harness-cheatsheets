@@ -3,6 +3,9 @@ set shell := ["bash", "-cu"]
 default:
   just claude
 
+fetch-fonts:
+  ./scripts/fetch-fonts.sh
+
 claude:
   typst compile --root . --font-path assets/fonts/ claude-code/cheatsheet.typ claude-code/cheatsheet.pdf
 

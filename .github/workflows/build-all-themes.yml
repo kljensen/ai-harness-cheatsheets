@@ -17,8 +17,11 @@ jobs:
       - name: Install Typst
         uses: typst-community/setup-typst@v4
 
-      - name: Install Ghostscript
-        run: sudo apt-get update && sudo apt-get install -y ghostscript
+      - name: Install Ghostscript and woff2
+        run: sudo apt-get update && sudo apt-get install -y ghostscript woff2
+
+      - name: Fetch Anthropic fonts
+        run: ./scripts/fetch-fonts.sh
 
       - name: Build theme variants
         run: ./scripts/render-theme-variants.sh
