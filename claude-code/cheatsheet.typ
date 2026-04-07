@@ -76,7 +76,7 @@
       #entry-flow("--output-format json", "Structured output")
       #entry-flow("--json-schema", "Constrain response to JSON schema with certain fields")
       #entry-flow("--dangerously-skip-permissions", "Allow Claude to act without confirmation (YOLO)")
-      #entry-flow("--enable-auto-mode", "Near-YOLO with protection against dangerous actions")
+      #entry-flow("--permission-mode <mode>", "Set perm mode: default|acceptEdits|auto|plan|dontAsk|bypassPermissions")
     ]
     v(card-gap)
     section(title: "Keyboard Shortcuts", kind: "teal")[
@@ -85,14 +85,13 @@
       #entry-flow("Ctrl+D", "Exit Claude session")
       #entry-flow("Ctrl+L", "Clear terminal screen")
       #entry-flow("Ctrl+R", "Search earlier prompts")
-      #entry-flow("Ctrl+G", "Open prompt in \$EDITOR")
+      #entry-flow("Ctrl+G", "Open prompt in $EDITOR")
       #entry-flow("Ctrl+O", "Verbose transcript mode")
-      #entry-flow("Ctrl+V", "Paste image from clipboard")
       #entry-flow("Shift+Tab", "Cycle permission modes")
       #entry-flow("Alt+P", "Switch model mid-session")
       #entry-flow("Alt+T", "Toggle deeper thinking")
       #entry-flow("Esc", "Stop, rewind, or summarize")
-      #entry-flow("\\ + Enter", "Insert newline")
+      #entry-flow("Shift + Enter", "Insert newline")
       #entry-flow("@ + filename", "Mention/autocomplete a file")
       #entry-flow("!", "Run a shell command directly")
     ]
@@ -106,7 +105,7 @@
       #entry-flow("/mcp", "Open MCP manager")
       #entry-flow("claude mcp list", "List configured servers")
       #entry-flow("claude mcp add ...", "Add a server")
-      #entry-flow("claude mcp remove <name>", "Remove a server")
+      #entry-flow("claude mcp remove <name>", "Rm server")
 
     ]
   },
@@ -265,7 +264,7 @@
       #tip("Give Claude a way to check itself.", [
           Tests, linters, expected outputs. Anthropic calls this the single highest-leverage thing you can do.
       ])
-      #tip("Context is your \#1 resource.", [
+      #tip("Context is your #1 resource.", [
           File reads, command outputs, conversation — it all eats context. Performance degrades as it fills. Treat it like money.
       ])
       #tip("Two strikes, start over.", [
@@ -299,8 +298,8 @@
   },
 )
 
-#v(1fr)
-#page-footer(
-  "Claude Code v2.1 · " + datetime.today().display("[month repr:long] [day], [year]"),
-  "Theme: " + selected-theme.name
-)
+// #v(1fr)
+// #page-footer(
+//   "Claude Code v2.1 · " + datetime.today().display("[month repr:long] [day], [year]"),
+//   "Theme: " + selected-theme.name
+// )

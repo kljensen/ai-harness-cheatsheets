@@ -3,7 +3,8 @@
 .claude
 .pi
 .forge
-claude-code/preview-*.png
-claude-code/*.pdf
+# Compiled assets
+*.pdf
+*.png
 
 tmp/

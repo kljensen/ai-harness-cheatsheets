@@ -1,0 +1,37 @@
+name: Build All-Themes PDF
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Install Ghostscript
+        run: sudo apt-get update && sudo apt-get install -y ghostscript
+
+      - name: Build theme variants
+        run: ./scripts/render-theme-variants.sh
+
+      - name: Rename combined PDF
+        run: mv claude-code/variants/ALL-THEMES.pdf claude-code-all-themes.pdf
+
+      - name: Upload all-themes PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-code-all-themes
+          path: claude-code-all-themes.pdf
+
+      - name: Upload individual variants
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-code-theme-variants
+          path: claude-code/variants/cheatsheet-*.pdf
