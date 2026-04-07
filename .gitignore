@@ -8,4 +8,7 @@
 *.png
 !doc/*.png
 
+# Proprietary fonts (source your own)
+assets/fonts/
+
 tmp/
