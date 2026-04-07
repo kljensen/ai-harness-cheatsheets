@@ -77,3 +77,7 @@ All themes render on white paper with colored section headers and subtle card ti
 - [Typst](https://typst.app/) (tested with v0.13+)
 - [just](https://github.com/casey/just) (command runner)
 - [Ghostscript](https://www.ghostscript.com/) (`gs`) — only needed for combining variant PDFs
+
+## License
+
+[Unlicense](LICENSE) — public domain. Do whatever you want with it.
